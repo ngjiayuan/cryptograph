@@ -5,9 +5,7 @@ import { SafeArea } from "../../../components/safearea";
 export function AddingScreen({ navigation }) {
   return (
     <>
-      <SafeArea>
-        <Text>Adding Screen Placeholder</Text>
-      </SafeArea>
+      <Text>Adding Screen Placeholder</Text>
     </>
   );
 }

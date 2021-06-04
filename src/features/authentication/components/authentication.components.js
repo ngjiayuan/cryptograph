@@ -1,16 +1,11 @@
-import {
-  TouchableOpacity,
-  TextInput,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
+import { TextInput, SafeAreaView, StatusBar, Image } from "react-native";
+import { Button } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const AuthSafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
   background-color: ${(props) => props.theme.colors.ui.grey};
-  justify-content: center;
   align-items: center;
   padding: ${(props) => props.theme.spacing.l};
 `;
@@ -25,12 +20,13 @@ export const AuthInput = styled(TextInput)`
   font-family: ${(props) => props.theme.fonts.roboto};
 `;
 
-export const AuthButton = styled(TouchableOpacity)`
-  width: 80px;
+export const AuthButton = styled(Button)`
+  width: 116px;
   height: 40px;
-  background-color: ${(props) => props.theme.colors.ui.pink};
+  background-color: ${(props) => props.theme.colors.ui.white};
   align-items: center;
   justify-content: center;
+  border-radius: ${(props) => props.theme.sizes.xxs};
 `;
 
 export const Title = styled.Text`
@@ -43,10 +39,22 @@ export const AuthView = styled.View`
   width: 100%;
   align-items: center;
   padding: ${(props) => props.theme.spacing.ml};
+  border-radius: ${(props) => props.theme.sizes.xs};
 `;
 
 export const ButtonView = styled.View`
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
+`;
+
+export const Logo = styled(Image)`
+  width: 144px;
+  height: 144px;
+`;
+
+export const LogoView = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex: 0.5;
 `;

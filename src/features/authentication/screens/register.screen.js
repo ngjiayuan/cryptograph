@@ -7,6 +7,8 @@ import {
   AuthView,
   ButtonView,
   Title,
+  Logo,
+  LogoView,
 } from "../components/authentication.components";
 import { Spacer } from "../../../components/spacer";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
@@ -20,10 +22,13 @@ export function RegisterScreen({ navigation }) {
   return (
     <>
       <AuthSafeArea>
-        <Title>cryptograph</Title>
+        <LogoView>
+          <Logo source={require("../../../../assets/polygon.png")} />
+          <Title>cryptograph</Title>
+        </LogoView>
         <AuthView>
           <AuthInput
-            placeholder="Email"
+            placeholder="e-mail"
             value={email}
             textContentType="emailAddress"
             keyboardType="email-address"
@@ -32,7 +37,7 @@ export function RegisterScreen({ navigation }) {
           />
           <Spacer />
           <AuthInput
-            placeholder="Password"
+            placeholder="password"
             value={password}
             textContentType="password"
             secureTextEntry
@@ -41,7 +46,7 @@ export function RegisterScreen({ navigation }) {
           />
           <Spacer />
           <AuthInput
-            placeholder="Re-enter Password"
+            placeholder="re-enter password"
             value={repeatedPassword}
             textContentType="password"
             secureTextEntry
@@ -52,12 +57,29 @@ export function RegisterScreen({ navigation }) {
           {error && <Text>{error}</Text>}
           <ButtonView>
             <AuthButton
+              onPress={() => navigation.goBack()}
+              color="black"
+              icon="arrow-left"
+              labelStyle={{
+                fontFamily: "Poppins_400Regular",
+              }}
+              uppercase={false}
+            >
+              back
+            </AuthButton>
+            <AuthButton
               onPress={() => {
                 onRegister(email, password, repeatedPassword);
                 navigation.navigate("LoginScreen");
               }}
+              color="black"
+              icon="email-outline"
+              labelStyle={{
+                fontFamily: "Poppins_400Regular",
+              }}
+              uppercase={false}
             >
-              <Text>Register</Text>
+              register
             </AuthButton>
           </ButtonView>
         </AuthView>

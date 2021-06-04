@@ -7,6 +7,8 @@ import {
   AuthView,
   ButtonView,
   Title,
+  Logo,
+  LogoView,
 } from "../components/authentication.components";
 import { Spacer } from "../../../components/spacer";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
@@ -19,10 +21,13 @@ export function LoginScreen({ navigation }) {
   return (
     <>
       <AuthSafeArea>
-        <Title>cryptograph</Title>
+        <LogoView>
+          <Logo source={require("../../../../assets/polygon.png")} />
+          <Title>cryptograph</Title>
+        </LogoView>
         <AuthView>
           <AuthInput
-            placeholder="Email"
+            placeholder="e-mail"
             value={email}
             textContentType="emailAddress"
             keyboardType="email-address"
@@ -31,7 +36,7 @@ export function LoginScreen({ navigation }) {
           />
           <Spacer />
           <AuthInput
-            placeholder="Password"
+            placeholder="password"
             value={password}
             textContentType="password"
             secureTextEntry
@@ -41,11 +46,27 @@ export function LoginScreen({ navigation }) {
           <Spacer />
           {error && <Text>{error}</Text>}
           <ButtonView>
-            <AuthButton onPress={() => onLogin(email, password)}>
-              <Text>Login</Text>
+            <AuthButton
+              onPress={() => navigation.navigate("RegisterScreen")}
+              color="black"
+              icon="email-outline"
+              labelStyle={{
+                fontFamily: "Poppins_400Regular",
+              }}
+              uppercase={false}
+            >
+              register
             </AuthButton>
-            <AuthButton onPress={() => navigation.navigate("RegisterScreen")}>
-              <Text>Register</Text>
+            <AuthButton
+              onPress={() => onLogin(email, password)}
+              color="black"
+              icon="key"
+              labelStyle={{
+                fontFamily: "Poppins_400Regular",
+              }}
+              uppercase={false}
+            >
+              login
             </AuthButton>
           </ButtonView>
         </AuthView>
