@@ -1,6 +1,4 @@
 import {
-  Text,
-  View,
   TouchableOpacity,
   TextInput,
   SafeAreaView,
