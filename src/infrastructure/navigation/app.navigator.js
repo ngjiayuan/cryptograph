@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import { HomeScreen } from "../../features/home/screens/home.screen";
+import { HomeNavigator } from "./home.navigator";
 import { AnalysisScreen } from "../../features/analysis/screens/analysis.screen";
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 
@@ -32,7 +32,7 @@ export function AppNavigator() {
         activeBackgroundColor: "gray",
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeNavigator} />
       <Tab.Screen name="Analysis" component={AnalysisScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
