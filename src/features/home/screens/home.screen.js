@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import { ScrollView } from "react-native";
 import { PieChart } from "react-native-chart-kit";
+import ModalDropdown from "react-native-modal-dropdown";
 
 import { SafeArea } from "../../../components/safearea";
 import { StyledButton } from "../../../components/button";
@@ -17,13 +18,34 @@ const Title = styled.Text`
   font-family: ${(props) => props.theme.fonts.poppins};
 `;
 
+const Dropdown = styled(ModalDropdown)`
+  background-color: ${(props) => props.theme.colors.ui.white};
+  padding: ${(props) => props.theme.spacing.s};
+  width: 120px;
+  align-items: center;
+`;
+
 export function HomeScreen({ navigation }) {
+  const [tokenData, setTokenData] = useState(true);
+
+  useEffect(() => {
+    console.log(tokenData);
+  }, [tokenData]);
+
   return (
     <>
       <SafeArea>
         <Container>
           <Spacer />
           <Title>portfolio</Title>
+          <Dropdown
+            options={["by token", "by exchange"]}
+            onSelect={(selection) =>
+              selection === 0 ? setTokenData(true) : setTokenData(false)
+            }
+            dropdownStyle={{ height: 72 }}
+            defaultValue="by token"
+          />
           <PieChart
             data={data}
             width={360}
